@@ -1,0 +1,46 @@
+diablo:
+  right_1_position_controller:
+    joint: MotR1
+    pid:
+      d: 0
+      i: 0
+      p: 2000
+    type: effort_controllers/JointPositionController
+  right_2_position_controller:
+    joint: MotR2
+    pid:
+      d: 0
+      i: 0
+      p: 1300
+    type: effort_controllers/JointPositionController
+  right_wheel_velocity_controller:
+    joint: WheelR
+    pid:
+      d: 0
+      i: 0
+      p: 0.2
+    type: effort_controllers/JointVelocityController
+  left_1_position_controller:
+    joint: MotL1
+    pid:
+      d: 0
+      i: 0
+      p: 2000
+    type: effort_controllers/JointPositionController
+  left_2_position_controller:
+    joint: MotL2
+    pid:
+      d: 0
+      i: 0
+      p: 1300
+    type: effort_controllers/JointPositionController
+  left_wheel_velocity_controller:
+    joint: WheelL
+    pid:
+      d: 0
+      i: 0
+      p: 0.2
+    type: effort_controllers/JointVelocityController
+  joint_state_controller:
+    publish_rate: 50
+    type: joint_state_controller/JointStateController

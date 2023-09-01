@@ -1,0 +1,1191 @@
+<?xml version="1.0"?>
+<sdf version='1.6'>
+  <model name='diablo'>
+  <pose>0 0 1 0 0 0</pose>
+  
+    <joint name="ground_fix" type="fixed">
+    	<pose>0 0 1 0 0 0</pose>
+        <parent>world</parent>
+        <child>Body</child>
+    </joint>
+
+    <link name='Body'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>6.72372</mass>
+        <inertia>
+          <ixx>0.04835304544</ixx>
+          <ixy>-0.00000187046</ixy>
+          <ixz>-0.00263123506</ixz>
+          <iyy>0.07156251226</iyy>
+          <iyz>0.00000709833</iyz>
+          <izz>0.07239192173</izz>
+        </inertia>
+        <pose frame=''>0.01243 0.00015 -0.00675 0 0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Body.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Body.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0</min_depth>
+            </ode>
+            <bullet>
+              <split_impulse>1</split_impulse>
+              <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+            </bullet>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+   
+    <link name='Leg0_R'>
+      <pose frame=''>0 -0.1238 0  0 0.7853981634 0</pose>
+      <inertial>
+        <mass>2.46054</mass>
+        <inertia>
+          <ixx>0.00853721554</ixx>
+          <ixy>-0.00000557176</ixy>
+          <ixz>-0.00000007947</ixz>
+          <iyy>0.00817363920</iyy>
+          <iyz>0.00020599673</iyz>
+          <izz>0.00794292074</izz>
+        </inertia>
+        <pose frame=''>-0.00036 0.01353 -0.00417 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_0.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name='Leg0_L'>
+      <pose frame=''>0 0.12375 0 0 -0.7853981634 3.141592653</pose>
+      <inertial>
+        <mass>2.46054</mass>
+        <inertia>
+          <ixx>0.00853721554</ixx>
+          <ixy>-0.00000557176</ixy>
+          <ixz>-0.00000007947</ixz>
+          <iyy>0.00817363920</iyy>
+          <iyz>0.00020599673</iyz>
+          <izz>0.00794292074</izz>
+        </inertia>
+        <pose frame=''>-0.00036 0.01353 -0.00417 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_0.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name='Leg1_R'>
+      <pose frame=''>0 -0.17625 0 0 0.7853981634 3.141592653</pose>
+      <inertial>
+        <mass>1.24694</mass>
+        <inertia>
+          <ixx>0.00293798860</ixx>
+          <ixy>-0.00003883141</ixy>
+          <ixz>0.00009809991</ixz>
+          <iyy>0.00343777913</iyy>
+          <iyz>-0.00004625489</iyz>
+          <izz>0.00226057779</izz>
+        </inertia>
+        <pose frame=''>-0.00012 -0.02373 -0.00534 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_1_R.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <!-- <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_1_L.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision> -->
+    </link>
+
+    <link name='Leg1_L'>
+      <pose frame=''>0 0.17625 0 0 -0.7853981634 0</pose>
+      <inertial>
+        <mass>1.24694</mass>
+        <inertia>
+          <ixx>0.00282971660</ixx>
+          <ixy>-0.00001808035</ixy>
+          <ixz>-0.00009872009</ixz>
+          <iyy>0.00344247372</iyy>
+          <iyz>-0.00006052905</iyz>
+          <izz>0.00214713102</izz>
+        </inertia>
+        <pose frame=''>0.00196 -0.02373 -0.00534 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_1_L.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <!-- <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_1_R.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision> -->
+    </link>
+
+    <link name='Leg2_R'>
+      <pose frame=''>-0.06363961031 -0.17625 -0.06363961031 0 -0.7853981634 0</pose>
+      <inertial>
+        <mass>0.10247</mass>
+        <inertia>
+          <ixx>0.00081266186</ixx>
+          <ixy>0.00001334864</ixy>
+          <ixz>0.00012964651</ixz>
+          <iyy>0.00085532347</iyy>
+          <iyz>0.00006246273</iyz>
+          <izz>0.00006022942</izz>
+        </inertia>
+        <pose frame=''>-0.01628 -0.008 -0.07331 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_2.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <!-- <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_2.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision> -->
+    </link>
+
+    <link name='Leg2_L'>
+      <pose frame=''>-0.06363961031 0.19225 -0.06363961031 0 -0.7853981634 0</pose>
+      <inertial>
+        <mass>0.10247</mass>
+        <inertia>
+          <ixx>0.00081266186</ixx>
+          <ixy>0.00001334864</ixy>
+          <ixz>0.00012964651</ixz>
+          <iyy>0.00085532347</iyy>
+          <iyz>0.00006246273</iyz>
+          <izz>0.00006022942</izz>
+        </inertia>
+        <pose frame=''>-0.01628 -0.008 -0.07331 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_2.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <!-- <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_2.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision> -->
+    </link>
+
+    <link name='Leg3_R'>
+      <pose frame=''>0 -0.2155 -0.1979898987 0 0.7853981634 0</pose>
+      <inertial>
+        <mass>1.29685</mass>
+        <inertia>
+          <ixx>0.00302829941</ixx>
+          <ixy>-0.00003267530</ixy>
+          <ixz>-0.00018726087</ixz>
+          <iyy>0.00363170943</iyy>
+          <iyz>-0.00016180170</iyz>
+          <izz>0.00218077632</izz>
+        </inertia>
+        <pose frame=''>-0.00127 -0.02001 0.00598 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_3.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <!-- <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_3.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision> -->
+    </link>
+
+    <link name='Leg3_L'>
+      <pose frame=''>0 0.2155 -0.1979898987 0 -0.7853981634 3.141592653</pose>
+      <inertial>
+        <mass>1.29685</mass>
+        <inertia>
+          <ixx>0.00302829941</ixx>
+          <ixy>-0.00003267530</ixy>
+          <ixz>-0.00018726087</ixz>
+          <iyy>0.00363170943</iyy>
+          <iyz>-0.00016180170</iyz>
+          <izz>0.00218077632</izz>
+        </inertia>
+        <pose frame=''>-0.00127 -0.02001 0.00598 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_3.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <!-- <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Leg_3.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision> -->
+    </link>
+
+    <link name='Wheel_R'>
+      <pose frame=''>0 -0.24625 -0.1979898987 0 0 0</pose>
+      <inertial>
+        <mass>1.36187</mass>
+        <inertia>
+          <ixx>0.00349977</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00660656</iyy>
+          <iyz>0</iyz>
+          <izz>0.00349977</izz>
+        </inertia>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Wheel.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>65535</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <link name='Wheel_L'>
+      <pose frame=''>0 0.24625 -0.1979898987 0 0 3.141592653</pose>
+      <inertial>
+        <mass>1.36187</mass>
+        <inertia>
+          <ixx>0.00349977</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00660656</iyy>
+          <iyz>0</iyz>
+          <izz>0.00349977</izz>
+        </inertia>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Wheel.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://DIABLO/STL/Wheel.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>65535</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <joint name='Motor0_L' type='revolute'>
+      <parent>Body</parent>
+      <child>Leg0_L</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <limit>          
+          <lower>-1.53</lower>
+          <upper>1.56</upper>
+          <effort>200</effort>
+          <velocity>100</velocity>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+          <friction>0</friction>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+    <joint name='Motor0_R' type='revolute'>
+      <parent>Body</parent>
+      <child>Leg0_R</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <limit>          
+          <lower>-1.53</lower>
+          <upper>1.56</upper>
+          <effort>200</effort>
+          <velocity>100</velocity>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+          <friction>0</friction>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+    <joint name='Motor1_L' type='revolute'>
+      <parent>Leg0_L</parent>
+      <child>Leg1_L</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <limit>          
+          <lower>-1.0</lower>
+          <upper>1.0</upper>         
+          <effort>1000</effort>
+          <velocity>500</velocity>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+          <friction>0</friction>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+    <joint name='Motor1_R' type='revolute'>
+      <parent>Leg0_R</parent>
+      <child>Leg1_R</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <limit>          
+          <lower>-1.0</lower>
+          <upper>1.0</upper>
+          <effort>1000</effort>
+          <velocity>500</velocity>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+          <friction>0</friction>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+    <joint name='J1_L' type='revolute'>
+      <parent>Leg0_L</parent>
+      <child>Leg2_L</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <use_parent_model_frame>1</use_parent_model_frame>        
+        <limit>
+          <lower>-0.5</lower>
+          <upper>0.5</upper>
+        </limit>       
+        <dynamics>
+          <damping>0.2</damping>
+          <friction>0.1</friction>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+    <joint name='J1_R' type='revolute'>
+      <parent>Leg0_R</parent>
+      <child>Leg2_R</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <limit>
+          <lower>-0.5</lower>
+          <upper>0.5</upper>
+        </limit>       
+        <dynamics>
+          <damping>0.2</damping>
+          <friction>0.1</friction>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+    <joint name='J2_L' type='revolute'>
+      <parent>Leg1_L</parent>
+      <child>Leg3_L</child>
+      <pose frame=''>0 0 0.14 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <limit>
+          <lower>-0.5</lower>
+          <upper>0.5</upper>
+        </limit>       
+        <dynamics>
+          <damping>0.2</damping>
+          <friction>0.1</friction>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+    <joint name='J2_R' type='revolute'>
+      <parent>Leg1_R</parent>
+      <child>Leg3_R</child>
+      <pose frame=''>0 0 0.14 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <limit>
+          <lower>-0.5</lower>
+          <upper>0.5</upper>
+        </limit>       
+        <dynamics>
+          <damping>0.2</damping>
+          <friction>0.1</friction>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+    <joint name='J3_L' type='revolute'>
+      <parent>Leg2_L</parent>
+      <child>Leg3_L</child>
+      <pose frame=''>0 0 0.05 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <limit>
+          <lower>-0.5</lower>
+          <upper>0.5</upper>
+        </limit>       
+        <dynamics>
+          <damping>0.2</damping>
+          <friction>0.1</friction>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+    <joint name='J3_R' type='revolute'>
+      <parent>Leg2_R</parent>
+      <child>Leg3_R</child>
+      <pose frame=''>0 0 0.05 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <limit>
+          <lower>-0.5</lower>
+          <upper>0.5</upper>
+        </limit>       
+        <dynamics>
+          <damping>0.2</damping>
+          <friction>0.1</friction>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+    <joint name='Motor2_L' type='revolute'>
+      <parent>Leg3_L</parent>
+      <child>Wheel_L</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <dynamics>
+          <damping>0</damping>
+          <friction>0</friction>
+        </dynamics>
+        <limit>
+          <effort>1000</effort>
+          <velocity>1000</velocity>
+        </limit>       
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+    <joint name='Motor2_R' type='revolute'>
+      <parent>Leg3_R</parent>
+      <child>Wheel_R</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <limit>
+          <effort>1000</effort>
+          <velocity>1000</velocity>
+        </limit>       
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+  <plugin name="M1R" filename="libgeneric_motor_plugin.so">
+  	<namespace>diablo</namespace>
+  	<joint_name>Motor0_R</joint_name>
+  </plugin>
+  <plugin name="M2R" filename="libgeneric_motor_plugin.so">
+  	<namespace>diablo</namespace>
+  	<joint_name>Motor1_R</joint_name>
+  </plugin>  
+  <plugin name="M3R" filename="libgeneric_motor_plugin.so">
+  	<namespace>diablo</namespace>
+  	<joint_name>Motor2_R</joint_name>
+  </plugin>
+  <plugin name="M1L" filename="libgeneric_motor_plugin.so">
+  	<namespace>diablo</namespace>
+  	<joint_name>Motor0_L</joint_name>
+  </plugin>
+  <plugin name="M2L" filename="libgeneric_motor_plugin.so">
+  	<namespace>diablo</namespace>
+  	<joint_name>Motor1_L</joint_name>
+  </plugin>
+  <plugin name="M3L" filename="libgeneric_motor_plugin.so">
+  	<namespace>diablo</namespace>
+  	<joint_name>Motor2_L</joint_name>
+  </plugin>
+
+
+  </model>
+</sdf>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
