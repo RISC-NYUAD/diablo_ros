@@ -1143,28 +1143,96 @@
   <plugin name="M1R" filename="libgeneric_motor_plugin.so">
   	<namespace>diablo</namespace>
   	<joint_name>Motor0_R</joint_name>
+  	<Kp>100.0</Kp>
+  	<Kd>50.0</Kd>
+  	<Ki>3.0</Ki>
   </plugin>
   <plugin name="M2R" filename="libgeneric_motor_plugin.so">
   	<namespace>diablo</namespace>
   	<joint_name>Motor1_R</joint_name>
+  	<Kp>100.0</Kp>
+  	<Kd>30.0</Kd>
+  	<Ki>3.0</Ki>
   </plugin>  
   <plugin name="M3R" filename="libgeneric_motor_plugin.so">
   	<namespace>diablo</namespace>
   	<joint_name>Motor2_R</joint_name>
+  	<Kp>5.0</Kp>
+  	<Kd>2.0</Kd>
+  	<Ki>0.2</Ki>
   </plugin>
   <plugin name="M1L" filename="libgeneric_motor_plugin.so">
   	<namespace>diablo</namespace>
   	<joint_name>Motor0_L</joint_name>
+  	<Kp>100.0</Kp>
+  	<Kd>50.0</Kd>
+  	<Ki>3.0</Ki>
   </plugin>
   <plugin name="M2L" filename="libgeneric_motor_plugin.so">
   	<namespace>diablo</namespace>
   	<joint_name>Motor1_L</joint_name>
+  	<Kp>100.0</Kp>
+  	<Kd>30.0</Kd>
+  	<Ki>3.0</Ki>
   </plugin>
   <plugin name="M3L" filename="libgeneric_motor_plugin.so">
   	<namespace>diablo</namespace>
   	<joint_name>Motor2_L</joint_name>
+  	<Kp>5.0</Kp>
+  	<Kd>2.0</Kd>
+  	<Ki>0.2</Ki>
   </plugin>
 
+    <joint name="imu_joint" type="fixed">
+      <parent>Body</parent>
+      <child>imu_link</child>
+    </joint>
+    <link name="imu_link">
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.1</mass>
+        <inertia> 
+		    <ixx>0.001</ixx>
+		    <ixy>0</ixy> 
+		    <ixz>0</ixz> 
+		    <iyy>0.001</iyy> 
+		    <iyz>0</iyz>
+		    <izz>0.002</izz>
+        </inertia>
+      </inertial>
+      <visual name="imu_visual">
+      	<pose>0 0 0 0 0 0</pose>
+      	<geometry>
+      	  <sphere>
+      	  	<radius>0.01</radius>
+      	  </sphere>
+      	</geometry>
+      </visual>
+      <collision name="imu_collision">
+      	<pose>0 0 0 0 0 0</pose>
+      	<geometry>
+      	  <sphere>
+      	    <radius>0.01</radius>
+      	  </sphere>
+      	</geometry>
+      </collision>      
+      <sensor name='imu_sensor' type='imu'>
+        <always_on>1</always_on>
+        <update_rate>1000</update_rate>
+        <pose>0 0 0 0 -0 0</pose>
+			<topic>__default_topic__</topic>
+		    <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+		      <topicName>imu</topicName>
+		      <bodyName>imu_link</bodyName>
+		      <updateRateHZ>1000.0</updateRateHZ>
+		      <gaussianNoise>0.0001</gaussianNoise>
+		      <xyzOffset>0 0 0</xyzOffset>
+		      <rpyOffset>0 0 0</rpyOffset>
+		      <frameName>imu_link</frameName>
+		      <initialOrientationAsReference>false</initialOrientationAsReference>
+		    </plugin>
+      </sensor>
+    </link>
 
   </model>
 </sdf>
