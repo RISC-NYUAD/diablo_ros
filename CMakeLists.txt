@@ -38,3 +38,6 @@ catkin_package(
 
 add_library(generic_motor_plugin SHARED src/motor_controller.cpp)
 target_link_libraries(generic_motor_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+
+add_library(low_ctrl_plugin SHARED src/low_level_controller.cpp)
+target_link_libraries(low_ctrl_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})

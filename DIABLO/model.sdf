@@ -1,14 +1,15 @@
 <?xml version="1.0"?>
 <sdf version='1.6'>
   <model name='diablo'>
-  <pose>0 0 1 0 0 0</pose>
+  <pose>0 0 0.3 0 0 0</pose>
   
+  <!--
     <joint name="ground_fix" type="fixed">
     	<pose>0 0 1 0 0 0</pose>
         <parent>world</parent>
         <child>Body</child>
     </joint>
-
+  -->
     <link name='Body'>
       <pose frame=''>0 0 0 0 0 0</pose>
       <inertial>
@@ -675,11 +676,11 @@
         <surface>
           <friction>
             <ode>
-              <mu>1</mu>
-              <mu2>1</mu2>
+              <mu>0.7</mu>
+              <mu2>0.7</mu2>
               <fdir1>0 0 0</fdir1>
-              <slip1>0</slip1>
-              <slip2>0</slip2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
             </ode>
             <torsional>
               <coefficient>1</coefficient>
@@ -755,11 +756,11 @@
         <surface>
           <friction>
             <ode>
-              <mu>1</mu>
-              <mu2>1</mu2>
+              <mu>0.7</mu>
+              <mu2>0.7</mu2>
               <fdir1>0 0 0</fdir1>
-              <slip1>0</slip1>
-              <slip2>0</slip2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
             </ode>
             <torsional>
               <coefficient>1</coefficient>
@@ -1143,44 +1144,44 @@
   <plugin name="M1R" filename="libgeneric_motor_plugin.so">
   	<namespace>diablo</namespace>
   	<joint_name>Motor0_R</joint_name>
-  	<Kp>100.0</Kp>
-  	<Kd>50.0</Kd>
+  	<Kp>180.0</Kp>
+  	<Kd>10.0</Kd>
   	<Ki>3.0</Ki>
   </plugin>
   <plugin name="M2R" filename="libgeneric_motor_plugin.so">
   	<namespace>diablo</namespace>
   	<joint_name>Motor1_R</joint_name>
-  	<Kp>100.0</Kp>
-  	<Kd>30.0</Kd>
+  	<Kp>150.0</Kp>
+  	<Kd>10.0</Kd>
   	<Ki>3.0</Ki>
   </plugin>  
   <plugin name="M3R" filename="libgeneric_motor_plugin.so">
   	<namespace>diablo</namespace>
   	<joint_name>Motor2_R</joint_name>
-  	<Kp>5.0</Kp>
+  	<Kp>20.0</Kp>
   	<Kd>2.0</Kd>
-  	<Ki>0.2</Ki>
+  	<Ki>0.5</Ki>
   </plugin>
   <plugin name="M1L" filename="libgeneric_motor_plugin.so">
   	<namespace>diablo</namespace>
   	<joint_name>Motor0_L</joint_name>
-  	<Kp>100.0</Kp>
-  	<Kd>50.0</Kd>
+  	<Kp>180.0</Kp>
+  	<Kd>10.0</Kd>
   	<Ki>3.0</Ki>
   </plugin>
   <plugin name="M2L" filename="libgeneric_motor_plugin.so">
   	<namespace>diablo</namespace>
   	<joint_name>Motor1_L</joint_name>
-  	<Kp>100.0</Kp>
-  	<Kd>30.0</Kd>
+  	<Kp>150.0</Kp>
+  	<Kd>10.0</Kd>
   	<Ki>3.0</Ki>
   </plugin>
   <plugin name="M3L" filename="libgeneric_motor_plugin.so">
   	<namespace>diablo</namespace>
   	<joint_name>Motor2_L</joint_name>
-  	<Kp>5.0</Kp>
+  	<Kp>20.0</Kp>
   	<Kd>2.0</Kd>
-  	<Ki>0.2</Ki>
+  	<Ki>0.5</Ki>
   </plugin>
 
     <joint name="imu_joint" type="fixed">
@@ -1233,6 +1234,9 @@
 		    </plugin>
       </sensor>
     </link>
+    <plugin name="low_lvl_controller" filename="liblow_ctrl_plugin.so">
+    	<namespace>diablo</namespace>
+    </plugin>
 
   </model>
 </sdf>
