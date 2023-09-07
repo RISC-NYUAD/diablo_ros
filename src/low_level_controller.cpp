@@ -21,7 +21,7 @@ public: ros::NodeHandle nh;
 public: ros::Subscriber velocity_cmd;
 public: ros::Publisher left_cmd, right_cmd, m0r_cmd, m0l_cmd, m1r_cmd, m1l_cmd;
 public: double LIM_, smooth_x_vel;
-private: double lin_x_cmd, ang_z_cmd, integral, Kp, Kd, Ki, vel_int, height_cmd;
+private: double lin_x_cmd, ang_z_cmd, integral, Kp, Kd, Ki, vel_int, height_cmd, roll_cmd;
 private: physics::LinkPtr base_link;
 private: physics::ModelPtr model;
 private: event::ConnectionPtr updateConnection;
@@ -34,6 +34,7 @@ public: void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf)
 	  	this->ang_z_cmd = 0.0;
 	  	this->integral = 0.0;
 	  	this->height_cmd = 0.5;
+	  	this->roll_cmd = 0.0;
 	  	LIM_ = 10.0;
 	  	this->Kp = 250.0;
 	  	this->Kd = 10.0;
@@ -102,15 +103,23 @@ public: void onUpdate()
 		right_cmd.publish(r_msg);
 
 
+		double height_l, height_r;
+		height_r = -0.5*(this->roll_cmd);
+		height_l = 0.5*(this->roll_cmd);
+
 		//map height 0.5 to P0=0, P1=0
-		double p0 = -0.6*(this->height_cmd - 0.5) ;
-		double p1 = 1.05*(this->height_cmd - 0.5) ;
+		double p0_r = -0.6*(this->height_cmd + height_r - 0.5) ;
+		double p1_r = 1.05*(this->height_cmd + height_r - 0.5) ;
+		double p0_l = -0.6*(this->height_cmd + height_l - 0.5) ;
+		double p1_l = 1.05*(this->height_cmd + height_l - 0.5) ;		
 		std_msgs::Float64 msg_out;
-		msg_out.data = p0;
+		msg_out.data = p0_r;
 		m0r_cmd.publish(msg_out);
+		msg_out.data = p0_l;
 		m0l_cmd.publish(msg_out);
-		msg_out.data = p1;
+		msg_out.data = p1_r;
 		m1r_cmd.publish(msg_out);
+		msg_out.data = p1_l;
 		m1l_cmd.publish(msg_out);
 
 
@@ -121,12 +130,20 @@ public: void onUpdate()
 public: void vel_cmd_callback(const geometry_msgs::Twist& msg)
 	{
 		this->lin_x_cmd = msg.linear.x;
-		this->height_cmd += msg.linear.z;
+		this->height_cmd = msg.linear.z + 0.5; //zero command is 0.5, middle height
 		if((this->height_cmd)>1.0){
 			this->height_cmd = 1.0;
 		}if((this->height_cmd)<0.0){
 			this->height_cmd = 0.0;
 		}
+		this->roll_cmd = msg.angular.x; //zero command is zero roll
+		if((this->roll_cmd)>0.6){
+			this->roll_cmd = 0.6;
+		}if((this->roll_cmd)<-0.6){
+			this->roll_cmd = -0.6;
+		}
+		
+		
 		this->ang_z_cmd = 2.0*msg.angular.z;
 		return;		
 	}
