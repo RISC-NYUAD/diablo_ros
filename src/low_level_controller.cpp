@@ -21,7 +21,9 @@ public: ros::NodeHandle nh;
 public: ros::Subscriber velocity_cmd;
 public: ros::Publisher left_cmd, right_cmd, m0r_cmd, m0l_cmd, m1r_cmd, m1l_cmd;
 public: double LIM_, smooth_x_vel;
-private: double lin_x_cmd, ang_z_cmd, integral, Kp, Kd, Ki, vel_int, height_cmd, roll_cmd;
+private: double lin_x_cmd, ang_z_cmd, integral, Kp, Kd, Ki, vel_int, height_cmd, roll_cmd, JUMP_hstar;
+private: int JUMP_count;
+private: bool JUMPING;
 private: physics::LinkPtr base_link;
 private: physics::ModelPtr model;
 private: event::ConnectionPtr updateConnection;
@@ -40,6 +42,9 @@ public: void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf)
 	  	this->Kd = 10.0;
 	  	this->Ki = 70.0;
 	  	this->vel_int = 0.0;
+		this->JUMP_hstar = 0.5;
+		this->JUMPING = false;
+		this->JUMP_count = 0;
 
 		std::string ns;
 		if(_sdf->HasElement("namespace"))
@@ -65,7 +70,7 @@ public: void onUpdate()
 	{
 		ignition::math::Pose3d pose = (this->base_link)->WorldCoGPose();
 		ignition::math::Quaternion orientation = pose.Rot();
-		ignition::math::Vector3d lin_vel = (this->base_link)->WorldLinearVel();
+		ignition::math::Vector3d lin_vel = (this->base_link)->RelativeLinearVel();
 		ignition::math::Vector3d ang_vel = (this->base_link)->RelativeAngularVel();
 		ignition::math::Vector3d euler_angles = orientation.Euler();
 	//	std::cout << euler_angles.Y() << ", " << orientation.Y() << std::endl;		
@@ -102,7 +107,18 @@ public: void onUpdate()
 		left_cmd.publish(l_msg);
 		right_cmd.publish(r_msg);
 
-
+		if(this->JUMPING){
+			this->JUMP_count++;
+			this->height_cmd = 0.15 ;
+			if(this->JUMP_count > 1200){
+				this->height_cmd = 0.9;
+			}
+			if(this->JUMP_count > 1260){
+				this->height_cmd = this->JUMP_hstar ;
+				this->JUMP_count = 0;
+				this->JUMPING = false;
+			}
+		}
 		double height_l, height_r;
 		height_r = -0.5*(this->roll_cmd);
 		height_l = 0.5*(this->roll_cmd);
@@ -129,6 +145,14 @@ public: void onUpdate()
 
 public: void vel_cmd_callback(const geometry_msgs::Twist& msg)
 	{
+	   if(msg.linear.y > 1.0 && !(this->JUMPING)){
+	    this->JUMPING = true;
+	    this->JUMP_count = 0;
+	    this->JUMP_hstar = this->height_cmd;
+	    this->roll_cmd = 0.0; 
+	    return;
+	   }
+
 		this->lin_x_cmd = msg.linear.x;
 		this->height_cmd = msg.linear.z + 0.5; //zero command is 0.5, middle height
 		if((this->height_cmd)>1.0){
