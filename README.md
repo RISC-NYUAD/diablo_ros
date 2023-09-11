@@ -10,6 +10,7 @@ to start the simulation.
 ![Screenshot](diablo.png)
 
 Accepts **geometry_msgs/Twist** commands at topic ***diablo/vel_cmd***
+
 **linear.x** for forward/backward velocity
 
 **linear.z** between (-0.5, +0.5) to adjust height
