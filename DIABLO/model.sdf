@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <sdf version='1.6'>
   <model name='diablo'>
-  <pose>0 0 0.3 0 0 0</pose>
   
-  <!--
+    <pose>0 0 0.3 0 0 0</pose>
+  <!--  
     <joint name="ground_fix" type="fixed">
     	<pose>0 0 1 0 0 0</pose>
         <parent>world</parent>
@@ -656,7 +656,6 @@
             <uri>file://media/materials/scripts/gazebo.material</uri>
           </script>
         </material>
-
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -664,6 +663,20 @@
           </mesh>
         </geometry>
       </visual>
+      <visual name='visual_guide'>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+        <pose frame=''>0.05 -0.03 0 0 -0 0</pose>
+        <geometry>
+		  <sphere>
+		  	<radius>0.008</radius>
+		  </sphere>
+        </geometry>
+      </visual>      
       <collision name='collision'>
         <laser_retro>0</laser_retro>
         <max_contacts>10</max_contacts>
@@ -744,6 +757,20 @@
           </mesh>
         </geometry>
       </visual>
+      <visual name='visual_guide'>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+        <pose frame=''>0.05 -0.03 0 0 -0 0</pose>
+        <geometry>
+		  <sphere>
+		  	<radius>0.008</radius>
+		  </sphere>
+        </geometry>
+      </visual>      
       <collision name='collision'>
         <laser_retro>0</laser_retro>
         <max_contacts>10</max_contacts>

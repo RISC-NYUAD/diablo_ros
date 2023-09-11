@@ -15,7 +15,7 @@
 
     <arg name="description_name"           default="robot_description"/>
     <arg name="description_file"           default="$(find diablo_simulation)/urdf/diablo_simulation.urdf"/>
-
+  <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find diablo_simulation)"/>
   <param name="robot_description"
     command="$(find xacro)/xacro --inorder '$(find diablo_simulation)/urdf/diablo_simulation.xacro'" />
 
