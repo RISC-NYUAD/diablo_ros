@@ -17,6 +17,7 @@ class GenericMotorPlugin : public ModelPlugin
 {
 
 public: ros::NodeHandle nh;
+public: ros::Publisher torque_feedback;
 public: ros::Subscriber position_cmd, velocity_cmd;
 public: double LIM_;
 private: int mode;
@@ -55,7 +56,8 @@ public: void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf)
 		std::string vel_topic = ns + "/" + name + "/vel_cmd" ;
 
 		position_cmd = nh.subscribe(pos_topic, 1, &GenericMotorPlugin::pos_cmd_callback, this); 
-		velocity_cmd = nh.subscribe(vel_topic, 1, &GenericMotorPlugin::vel_cmd_callback, this); 		
+		velocity_cmd = nh.subscribe(vel_topic, 1, &GenericMotorPlugin::vel_cmd_callback, this); 	
+		torque_feedback = nh.advertise<std_msgs::Float64>(ns+"/"+name+"/applied_torque", 1);	
 		
 	  	this->updateConnection = event::Events::ConnectWorldUpdateBegin(std::bind(&GenericMotorPlugin::onUpdate, this));
 		
@@ -77,6 +79,9 @@ public: void onUpdate()
 			}
 			torque = -(this->Kp)*(angle - this->cmd) - 2.0*rate - 0.3*this->integral;			
 			this->motor_joint->SetForce(0,torque);
+			std_msgs::Float64 feedback_msg;
+			feedback_msg.data = torque;
+			torque_feedback.publish(feedback_msg);
 			return;
 		}
 		if(mode==1){
@@ -89,6 +94,9 @@ public: void onUpdate()
 			}
 			torque = -(this->Kd)*(rate - this->cmd) - (this->Ki)*this->integral;
 			this->motor_joint->SetForce(0,torque);
+			std_msgs::Float64 feedback_msg;
+			feedback_msg.data = torque;
+			torque_feedback.publish(feedback_msg);
 			return;
 		}
 
