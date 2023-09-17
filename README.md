@@ -1,6 +1,7 @@
 # diablo_ros1
 
-ROS1 + Gazebo simulation for Diablo balance bot.
+ROS1 + Gazebo simulation for Diablo balance bot. Adapts the sdf file from https://github.com/DDTRobot/DiabloSTLSDF
+
 run
 
     roslaunch diablo_simulation gazebo.launch
