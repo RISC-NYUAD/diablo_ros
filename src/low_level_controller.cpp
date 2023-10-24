@@ -99,11 +99,11 @@ public: void onUpdate()
 		
 		double real_Kp = this->Kp + 100.0*abs(euler_angles.Y()) ;
 		double des_vel = real_Kp*pitch_error + (this->Ki)*(this->integral) + (this->Kd)*rate ;
-		des_vel *= (1.0 + 2.0*(this->ang_z_cmd));
+		//des_vel *= (1.0 + 2.0*(this->ang_z_cmd));
 		
 		std_msgs::Float64 r_msg, l_msg;
-		r_msg.data = 0.5*des_vel + 0.5*(this->ang_z_cmd);
-		l_msg.data = 0.5*des_vel - 0.5*(this->ang_z_cmd);
+		r_msg.data = 0.5*des_vel + 4.0*(this->ang_z_cmd);
+		l_msg.data = 0.5*des_vel - 4.0*(this->ang_z_cmd);
 		left_cmd.publish(l_msg);
 		right_cmd.publish(r_msg);
 
