@@ -154,6 +154,11 @@ public: void vel_cmd_callback(const geometry_msgs::Twist& msg)
 	   }
 
 		this->lin_x_cmd = msg.linear.x;
+		if(msg.linear.x > 0.3){
+		  this->lin_x_cmd = 0.3;
+		}if(msg.linear.x < -0.3){
+		  this->lin_x_cmd = -0.3;
+		}
 		this->height_cmd = msg.linear.z + 0.5; //zero command is 0.5, middle height
 		if((this->height_cmd)>1.0){
 			this->height_cmd = 1.0;
@@ -168,7 +173,13 @@ public: void vel_cmd_callback(const geometry_msgs::Twist& msg)
 		}
 		
 		
-		this->ang_z_cmd = 2.0*msg.angular.z;
+		this->ang_z_cmd = msg.angular.z;
+		if(msg.angular.z > 0.3){
+		  this->ang_z_cmd = 0.3;
+		}if(msg.angular.z < -0.3){
+		  this->ang_z_cmd = -0.3;
+		}
+
 		return;		
 	}
 
